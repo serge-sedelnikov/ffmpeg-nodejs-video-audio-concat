@@ -2,6 +2,8 @@
 
 This script merges an MP4 video file with an MP3 audio file, making the audio the background for the video. The output is saved as a new video file.
 
+> **Note:** This script requires `ffmpeg` to be installed on your computer!
+
 ## Features
 
 - Adds a 5-second fade-out effect at the end of the audio.
