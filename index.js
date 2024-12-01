@@ -1,19 +1,13 @@
 const ffmpeg = require("fluent-ffmpeg");
 const ffmpegInstaller = require("@ffmpeg-installer/ffmpeg");
 const ProgressBar = require("progress");
-const getVideoDurationInSeconds =
-  require("get-video-duration").getVideoDurationInSeconds;
+const { getVideoDuration } = require("./utils");
+
 ffmpeg.setFfmpegPath(ffmpegInstaller.path);
 
 const inputVideoPath = "../1/output.MP4";
-const inputAudioPath = "../_instrumental.mp3";
-const outputPath = "../1/result_music.mp4";
-
-const getVideoDuration = async () => {
-  const duration = await getVideoDurationInSeconds(inputVideoPath);
-  console.log(`Video duration: ${duration} seconds`);
-  return duration;
-};
+const inputAudioPath = "../_jazz.mp3";
+const outputPath = "../1/result_music_songs.mp4";
 
 const runProcessVideo = (durationSec) => {
   const bar = new ProgressBar("Processing [:bar] :percent", {
@@ -37,7 +31,7 @@ const runProcessVideo = (durationSec) => {
 };
 
 async function start() {
-  const durationSec = await getVideoDuration();
+  const durationSec = await getVideoDuration(inputVideoPath);
   runProcessVideo(durationSec);
 }
 
